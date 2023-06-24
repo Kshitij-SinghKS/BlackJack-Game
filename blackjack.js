@@ -1,10 +1,19 @@
-let firstcard = prompt("Enter the face value of first card","1-13")
-let secondcard = prompt("Enter the face value of second card","1-13")
-let sum = parseInt(firstcard)+parseInt(secondcard)
+let firstcard = getRandom()
+let secondcard = getRandom()
+let sum = firstcard + secondcard
 let cards = [firstcard,secondcard]
  function startgame()
  {
     rendergame()
+ }
+ function getRandom(){
+    let rcard = Math.floor((Math.random()*13)+1)
+    if(rcard === 1)
+    return 11;
+    else if(rcard === 11||rcard === 12||rcard === 13)
+    return 10;
+    else 
+    return rcard;
  }
 function rendergame()
 {
@@ -33,7 +42,7 @@ function rendergame()
 
 function cardnew()
 {
-    let nextcard  = prompt("Enter new card value:","1-13")
+    let nextcard  = getRandom()
     sum+= parseInt(nextcard)
     cards.push(nextcard)
     rendergame()
