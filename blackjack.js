@@ -1,9 +1,26 @@
-let firstcard = getRandom()
-let secondcard = getRandom()
-let sum = firstcard + secondcard
-let cards = [firstcard,secondcard]
+let sum = 0
+let cards = []
+let isAlive = false
+let haveBlackjack = false
+let firstcard
+let secondcard
+
+let player = {
+    firstname:" Kshitij " ,
+     chips:1000
+ }
+ let playerEl = document.querySelector("#player-el")
+   playerEl.textContent = player.firstname + " " + player.chips
+
+
+
  function startgame()
  {
+    isAlive = true
+    let firstcard = getRandom()
+    let secondcard = getRandom()
+    sum = firstcard + secondcard
+    cards = [firstcard,secondcard]
     rendergame()
  }
  function getRandom(){
@@ -15,9 +32,9 @@ let cards = [firstcard,secondcard]
     else 
     return rcard;
  }
+
 function rendergame()
 {
-    
     let sumEl = document.querySelector("#sum-el")
     sumEl.textContent = "Sum: "+sum
     let cardEl = document.getElementById("cards-el")
@@ -32,9 +49,11 @@ function rendergame()
     }
     else if(sum===21)
     {
+        haveBlackjack =true
         message = "Wohoo!! You have a Blackjack";
     }
     else
+    isAlive = false
     message = "Huh!! You are out of the game";
     messageEl.textContent = message
   
@@ -42,8 +61,11 @@ function rendergame()
 
 function cardnew()
 {
+    if(isAlive===true && haveBlackjack===false)
+    {
     let nextcard  = getRandom()
     sum+= parseInt(nextcard)
     cards.push(nextcard)
     rendergame()
+    }
 }
