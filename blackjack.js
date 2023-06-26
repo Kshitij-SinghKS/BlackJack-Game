@@ -45,16 +45,17 @@ function rendergame()
     let messageEl = document.querySelector("#message-el")
     if(sum<=20)
     {
-        message = "Do you want to draw a card !!";
+        message = "Do you want to draw a card !!"
     }
     else if(sum===21)
     {
         haveBlackjack =true
-        message = "Wohoo!! You have a Blackjack";
+        message = "Wohoo!! You have a Blackjack"
     }
     else
-    isAlive = false
-    message = "Huh!! You are out of the game";
+   { isAlive = false
+    message = "Huh!! You are out of the game"
+   }
     messageEl.textContent = message
   
 }
@@ -64,7 +65,7 @@ function cardnew()
     if(isAlive===true && haveBlackjack===false)
     {
     let nextcard  = getRandom()
-    sum+= parseInt(nextcard)
+    sum+= nextcard
     cards.push(nextcard)
     rendergame()
     }
